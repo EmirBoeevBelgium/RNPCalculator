@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct NrButtonView: View {
-    @State var number: Int
+    var number: Int
     var body: some View {
         Button(action: {
             
         }) {
-            Text(String(number)).background(.black).foregroundStyle(.white).padding(20).cornerRadius(5)
-        }
+            Text(String(number))
+        }.background(.black).foregroundStyle(.white).cornerRadius(5)
     }
 }
 

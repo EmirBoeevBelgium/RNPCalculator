@@ -8,120 +8,76 @@
 import SwiftUI
 
 struct UserInterfaceView: View {
-    @State var result = ""
+    @State var calcEngine = CalcEngine()
     var body: some View {
         Grid {
             GridRow {
                 VStack {
-                    TextEditor(text: $result).border(.black, width: 2).frame(height: 200)
-                    Button(action: {
-                        print("Button clicked")
-                    }) {
-                        Text("Show stack")
+                    TextEditor(text: .constant(calcEngine.temporaryInput + "\n" + calcEngine.result)).border(.black, width: 2).frame(height: 220)
+                    Button("Show stack") {
+                        calcEngine.showStack()
+                    }
+                    Button("Clear stack") {
+                        calcEngine.clearStack()
                     }
                 }
                 VStack {
-                    HStack {
-                        
-                    }
                     Grid {
                         GridRow {
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("7")
+                            ForEach(7...9, id: \.self) {
+                                column in
+                                Button("\(column)") {
+                                    calcEngine.input(number: "\(column)")
+                                }.background(.black).foregroundStyle(.white).cornerRadius(5)
                             }
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("8")
-                            }
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("9")
-                            }
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("/")
+                            Button("/") {
+                                
                             }
                         }
                         GridRow {
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("4")
+                            ForEach(4...6, id: \.self) {
+                                column in
+                                Button("\(column)") {
+                                    calcEngine.input(number: "\(column)")
+                                }.background(.black).foregroundStyle(.white).cornerRadius(5)
                             }
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("5")
-                            }
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("6")
-
-                            }
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("X")
+                            Button("X") {
+                                
                             }
                         }
                         GridRow {
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("1")
+                            ForEach(1...3, id: \.self) {
+                                column in
+                                Button("\(column)") {
+                                    calcEngine.input(number: "\(column)")
+                                }.background(.black).foregroundStyle(.white).cornerRadius(5)
                             }
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("2")
-                            }
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("3")
-                            }
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("-")
+                            Button("-") {
+                                
                             }
                         }
                         GridRow {
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("0")
-                            }
-                            Text("")
-                            Text("")
-                            Button(action: {
-                                print("Button clicked")
-                            }) {
-                                Text("+")
+                            Button("0") {
+                                calcEngine.input(number: "0")
+                            }.background(.black).foregroundStyle(.white).cornerRadius(5)
+                            Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
+                            Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
+                            Button("+") {
+                               
                             }
                         }
                         GridRow {
-                            
+                            Button("Clear") {
+                                calcEngine.clear()
+                            }.gridCellColumns(2)
+                            Button("Enter") {
+                                calcEngine.save()
+                            }.gridCellColumns(2)
                         }
                     }
-                    HStack {
-                        Button(action: {
-                            print("Button clicked")
-                        }) {
-                            Text("Clear")
-                        }
-                        Button(action: {
-                            print("Button clicked")
-                        }) {
-                            Text("Enter")
-                        }
-                    }.padding()
+                    
+                    
+                
                 }.frame(width: 200)
                 
                 
