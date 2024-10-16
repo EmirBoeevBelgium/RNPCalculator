@@ -40,7 +40,9 @@ class CalcEngine {
     }
     
     func sum() {
-        
+        var sumResult = stack[stack.count] + stack[stack.count - 1]
+        stack.popLast()
+        stack.popLast()
     }
     
     func multiply() {
