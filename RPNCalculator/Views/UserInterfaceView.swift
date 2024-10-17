@@ -31,7 +31,7 @@ struct UserInterfaceView: View {
                                 }.background(.black).foregroundStyle(.white).cornerRadius(5)
                             }
                             Button("/") {
-                                
+                                calcEngine.divide()
                             }
                         }
                         GridRow {
@@ -42,7 +42,7 @@ struct UserInterfaceView: View {
                                 }.background(.black).foregroundStyle(.white).cornerRadius(5)
                             }
                             Button("X") {
-                                
+                                calcEngine.multiply()
                             }
                         }
                         GridRow {
@@ -53,7 +53,7 @@ struct UserInterfaceView: View {
                                 }.background(.black).foregroundStyle(.white).cornerRadius(5)
                             }
                             Button("-") {
-                                
+                                calcEngine.subtract()
                             }
                         }
                         GridRow {
@@ -63,7 +63,7 @@ struct UserInterfaceView: View {
                             Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                             Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                             Button("+") {
-                               
+                                calcEngine.sum()
                             }
                         }
                         GridRow {

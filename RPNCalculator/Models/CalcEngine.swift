@@ -14,14 +14,14 @@ class CalcEngine {
     var stack = [Double]()
     
     func input(number: String) {
-        if temporaryInput == "No operands" {
+        if temporaryInput == "No operands" || temporaryInput == "Not enough operands"  {
             temporaryInput.removeAll()
         }
         temporaryInput.append(number)
     }
     
     func save() {
-        if temporaryInput.isEmpty || temporaryInput == "No operands" {
+        if temporaryInput.isEmpty || temporaryInput == "No operands" || temporaryInput == "Not enough operands" {
             clear()
             temporaryInput.append("No operands")
         }
@@ -40,21 +40,88 @@ class CalcEngine {
     }
     
     func sum() {
-        var sumResult = stack[stack.count] + stack[stack.count - 1]
-        stack.popLast()
-        stack.popLast()
+        if stack.count < 2 {
+            clear()
+            temporaryInput.append("Not enough operands")
+        }
+        else {
+            var sumResult = stack[stack.count - 1] + stack[stack.count - 2]
+            
+            stack.popLast()
+            stack.popLast()
+            
+            var concatResult = "\n"
+            stack.append(sumResult)
+            concatResult.append(String(sumResult))
+            concatResult.append(result)
+            result.removeAll()
+            result.append(concatResult)
+            
+        }
+        
     }
     
     func multiply() {
-        
+        if stack.count < 2 {
+            clear()
+            temporaryInput.append("Not enough operands")
+        }
+        else {
+            var sumResult = stack[stack.count - 1] * stack[stack.count - 2]
+            
+            stack.popLast()
+            stack.popLast()
+            
+            var concatResult = "\n"
+            stack.append(sumResult)
+            concatResult.append(String(sumResult))
+            concatResult.append(result)
+            result.removeAll()
+            result.append(concatResult)
+            
+        }
     }
     
     func subtract() {
-        
+        if stack.count < 2 {
+            clear()
+            temporaryInput.append("Not enough operands")
+        }
+        else {
+            var sumResult = abs(stack[stack.count - 1] - stack[stack.count - 2])
+            
+            stack.popLast()
+            stack.popLast()
+            
+            var concatResult = "\n"
+            stack.append(sumResult)
+            concatResult.append(String(sumResult))
+            concatResult.append(result)
+            result.removeAll()
+            result.append(concatResult)
+            
+        }
     }
     
     func divide() {
-        
+        if stack.count < 2 {
+            clear()
+            temporaryInput.append("Not enough operands")
+        }
+        else {
+            var sumResult = abs(stack[stack.count - 1] / stack[stack.count - 2])
+            
+            stack.popLast()
+            stack.popLast()
+            
+            var concatResult = "\n"
+            stack.append(sumResult)
+            concatResult.append(String(sumResult))
+            concatResult.append(result)
+            result.removeAll()
+            result.append(concatResult)
+            
+        }
     }
     
     func clear() {
