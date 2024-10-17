@@ -26,9 +26,7 @@ struct UserInterfaceView: View {
                         GridRow {
                             ForEach(7...9, id: \.self) {
                                 column in
-                                Button("\(column)") {
-                                    calcEngine.input(number: "\(column)")
-                                }.background(.black).foregroundStyle(.white).cornerRadius(5)
+                                NrButtonView(number: "\(column)", calcEngine: calcEngine)
                             }
                             Button("/") {
                                 calcEngine.divide()
@@ -37,9 +35,7 @@ struct UserInterfaceView: View {
                         GridRow {
                             ForEach(4...6, id: \.self) {
                                 column in
-                                Button("\(column)") {
-                                    calcEngine.input(number: "\(column)")
-                                }.background(.black).foregroundStyle(.white).cornerRadius(5)
+                                NrButtonView(number: "\(column)", calcEngine: calcEngine)
                             }
                             Button("X") {
                                 calcEngine.multiply()
@@ -48,18 +44,14 @@ struct UserInterfaceView: View {
                         GridRow {
                             ForEach(1...3, id: \.self) {
                                 column in
-                                Button("\(column)") {
-                                    calcEngine.input(number: "\(column)")
-                                }.background(.black).foregroundStyle(.white).cornerRadius(5)
+                                NrButtonView(number: "\(column)", calcEngine: calcEngine)
                             }
                             Button("-") {
                                 calcEngine.subtract()
                             }
                         }
                         GridRow {
-                            Button("0") {
-                                calcEngine.input(number: "0")
-                            }.background(.black).foregroundStyle(.white).cornerRadius(5)
+                            NrButtonView(number: "0", calcEngine: calcEngine)
                             Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                             Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                             Button("+") {

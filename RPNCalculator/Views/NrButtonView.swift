@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct NrButtonView: View {
-    var number: Int
+    var number: String
+    @State var calcEngine: CalcEngine
     var body: some View {
-        Button(action: {
-            
-        }) {
-            Text(String(number))
+        Button(number) {
+            calcEngine.input(number: number)
         }.background(.black).foregroundStyle(.white).cornerRadius(5)
     }
 }
 
 #Preview {
-    NrButtonView(number: 1)
+    NrButtonView(number: "1", calcEngine: CalcEngine())
 }

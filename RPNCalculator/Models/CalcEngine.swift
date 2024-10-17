@@ -52,7 +52,9 @@ class CalcEngine {
             
             var concatResult = "\n"
             stack.append(sumResult)
+       
             concatResult.append(String(sumResult))
+            concatResult.append("\n+")
             concatResult.append(result)
             result.removeAll()
             result.append(concatResult)
@@ -74,7 +76,9 @@ class CalcEngine {
             
             var concatResult = "\n"
             stack.append(sumResult)
+           
             concatResult.append(String(sumResult))
+            concatResult.append("\nX")
             concatResult.append(result)
             result.removeAll()
             result.append(concatResult)
@@ -95,7 +99,9 @@ class CalcEngine {
             
             var concatResult = "\n"
             stack.append(sumResult)
+            
             concatResult.append(String(sumResult))
+            concatResult.append("\n-")
             concatResult.append(result)
             result.removeAll()
             result.append(concatResult)
@@ -116,7 +122,9 @@ class CalcEngine {
             
             var concatResult = "\n"
             stack.append(sumResult)
+            
             concatResult.append(String(sumResult))
+            concatResult.append("\n/")
             concatResult.append(result)
             result.removeAll()
             result.append(concatResult)
